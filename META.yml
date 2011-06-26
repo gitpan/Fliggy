@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Fliggy
-version:            0.009001
+version:            0.009002
 abstract:           Fliggy is Twiggy with inlined flash policy server
 author:
     - Viacheslav Tykhanovskyi <vti@cpan.org>
