@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 BEGIN {
-    $ENV{TWIGGY_DEBUG} = $ENV{FLIGGY_DEBUG};
+    $ENV{TWIGGY_DEBUG} = $ENV{FLIGGY_DEBUG} || 0;
 }
 
 use base 'Twiggy::Server';
@@ -109,12 +109,17 @@ sub _safe_read {
 
     my $rcount = sysread($sock, my $buf, $size);
 
+    # $rcount contains number of bytes read, 0 at end of file
+    if (defined $rcount && $rcount == 0) {
+        die "client disconnected";
+    }
+
     if (!defined $buf || !defined $rcount) {
         if ($! and $! != EAGAIN && $! != EINTR && $! != WSAEWOULDBLOCK) {
             die $!;
         }
         elsif (!$!) {
-            die "client disconnected";
+            die "client disconnected (unknown error)";
         }
 
         return;

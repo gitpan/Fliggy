@@ -5,7 +5,7 @@ use warnings;
 
 use 5.008_001;
 
-our $VERSION = '0.009002';
+our $VERSION = '0.009003';
 
 1;
 __END__
@@ -59,6 +59,8 @@ Viacheslav Tykhanovskyi, C<vti@cpan.org>.
 =head1 CREDITS
 
 L<Twiggy> authors.
+
+Johannes Plunien (plu)
 
 =head1 COPYRIGHT AND LICENSE
 
